@@ -70,18 +70,18 @@ def explore_statistics(data, indicator_names, countries, graph):
    
     selected_data = data[data['Indicator Name'].isin(indicator_names) & data['Country Name'].isin(countries)]
   
-    pivoted_data = selected_data.pivot_table(index=['Country Name'], values=['1961','1970','1980','1990','2000','2010','2020'] ,aggfunc='mean')
+    pivoted_data = selected_data.pivot_table(index=['Country Name',], values=['1961','1970','1980','1990','2000','2010','2020'] ,aggfunc='mean')
   
     pivoted_data = pivoted_data.transpose()
     
-    store_data = pivoted_data.to_csv("cleaned data.csv")
   
     summary_stats = pivoted_data.describe()
     correlation_matrix = pivoted_data.corr()
     mean_values = pivoted_data.mean()
     std_dev_values = pivoted_data.std()
+    store_data = pivoted_data.to_csv("cleaned data.csv")
     
-    print(summary_stats)
+    print(pivoted_data)
     print(correlation_matrix)
     print(mean_values)
     print(std_dev_values)
@@ -108,8 +108,8 @@ def explore_statistics(data, indicator_names, countries, graph):
   
 # Example usage
 data = cleaned_filled_data
-indicator_names_bar_graph = ['CO2 emissions (kg per 2017 PPP $ of GDP)','Foreign direct investment, net inflows (% of GDP)']
-countries_bar_graph = ['India']
+indicator_names_bar_graph = ['Population, total','Total greenhouse gas emissions (kt of CO2 equivalent)']
+countries_bar_graph = ['India','China']
 
 indicator_names_heatmap = ['Foreign direct investment, net inflows (% of GDP)','Droughts, floods, extreme temperatures (% of population, average 1990-2009)','Population, total','Poverty headcount ratio at $2.15 a day (2017 PPP) (% of population)','Forest area (sq. km)','Total greenhouse gas emissions (kt of CO2 equivalent)']
 countries_heat_graph = ['India']
