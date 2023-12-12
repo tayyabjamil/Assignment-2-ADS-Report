@@ -1,7 +1,10 @@
 import pandas as pd
 import seaborn as sns  # for a heatmap
 import matplotlib.pyplot as plt
-
+"""
+Function 
+bar graph to show data of China and India POpulation
+"""
 
 def bar_graph_for_indicators_and_Countires(pivoted_data):
     
@@ -12,6 +15,12 @@ def bar_graph_for_indicators_and_Countires(pivoted_data):
     ax.legend(title='Country Name',  loc='upper right',fontsize=18)
     plt.show()
    
+"""
+Function 
+heat map to show relationship of indicators how GDP and foreign investment factors 
+depend on each other
+
+"""
 def heatmap_for_indicators_and_Countires(pivoted_data): 
    
     fig, ax = plt.subplots(figsize=(16, 8))
@@ -28,6 +37,11 @@ def heatmap_for_indicators_and_Countires(pivoted_data):
     ax.set_title('Corelation of India Indicators ', fontsize=26)
     plt.show() 
     
+"""
+Function
+line graph to show time line of population increase in China and Inida and 
+
+"""
 def linegrpah_for_indicators_and_Countires(pivoted_data): 
     
     for country in pivoted_data.columns:
@@ -37,6 +51,10 @@ def linegrpah_for_indicators_and_Countires(pivoted_data):
         plt.title('Population, total', fontsize=16)
         plt.legend(title='Country', bbox_to_anchor=(1.05, 1), loc='upper left')
     
+"""
+main Function to read and transpose data 
+
+"""
 def read_and_transpose_data(filename):
     # Read data from World Bank
     read_data = pd.read_csv(filename, skiprows=3)
@@ -63,7 +81,11 @@ def read_and_transpose_data(filename):
 filename = 'API_19_DS2_en_csv_v2_5998250.csv'
 years_column,  indicator_col ,countries_col , cleaned_filled_data = read_and_transpose_data(filename)
 
+"""
+Function to explore data statistics inclusing describe method , pivot table ,
+mean and correlation method 
 
+"""
 def explore_statistics(data, indicator_names, countries, graph):
     
     # Filter data for the selected indicators and countries
@@ -136,17 +158,13 @@ def analyze_correlations_over_time(data, indicator_names):
     return yearly_correlations, mean_correlations
 
 
-print("\nYearly Correlations:")
-#print(yearly_correlations)
-print("\nMean Correlations Over Time:")
-#print(mean_correlations)
+    print("\nYearly Correlations:")
+    print(yearly_correlations)
+    print("\nMean Correlations Over Time:")
+    print(mean_correlations)
 
 
-
-
-
-
-
+analyze_correlations_over_time(pivoted_data,'Total greenhouse gas emissions (kt of CO2 equivalent)')
 
 
 
