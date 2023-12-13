@@ -176,10 +176,11 @@ def analyze_correlations_over_time(data, indicator_names):
     mean_correlations = yearly_correlations.groupby(level=1).mean()
     return yearly_correlations, mean_correlations
 
-    yearly_correlations, mean_correlations = analyze_correlations_over_time(
-        pivoted_data, 'Total greenhouse gas emissions (kt of CO2 equivalent)')
 
-    print("\nYearly Correlations:")
-    print(yearly_correlations)
-    print("\nMean Correlations Over Time:")
-    print(mean_correlations)
+yearly_correlations, mean_correlations = analyze_correlations_over_time(
+    pivoted_data, 'Total greenhouse gas emissions (kt of CO2 equivalent)')
+
+print("\nYearly Correlations:")
+print(yearly_correlations)
+print("\nMean Correlations Over Time:")
+print(mean_correlations)
