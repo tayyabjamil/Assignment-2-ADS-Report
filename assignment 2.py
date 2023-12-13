@@ -106,7 +106,11 @@ def explore_statistics(data, indicator_names, countries, graph):
     """
     selected_data = data[data['Indicator Name'].isin(
         indicator_names) & data['Country Name'].isin(countries)]
+   
+    selected_data.transpose().to_csv("cleaned data.csv")
+
     """
+    
     after having selected data im using pivot table because 
     there are too many values for each year
     """
@@ -124,14 +128,13 @@ def explore_statistics(data, indicator_names, countries, graph):
             '1961', '1970', '1980', '1990', '2000', '2010', '2020'], aggfunc='mean')
 
     pivot_table = pivot_table.transpose()
-
+    
     summary_stats = pivot_table.describe()
     correlation_matrix = pivot_table.corr()
     mean_values = pivot_table.mean()
     std_dev_values = pivot_table.std()
-    store_data = pivot_table.to_csv("cleaned data.csv")
 
-    print(pivot_table)
+ 
     print(correlation_matrix)
     print(mean_values)
     print(std_dev_values)
