@@ -9,7 +9,8 @@ Function to show bar graph to show data of China and India POpulation
 def bar_graph_for_indicators_and_Countires(pivoted_data):
 
     ax = pivoted_data.plot(kind='bar', figsize=(20, 12), fontsize=28)
-    ax.set_title('Urban population (% of total population)', fontsize=18)
+    ax.set_title(
+        'Total greenhouse gas emissions (kt of CO2 equivalent)', fontsize=18)
     # Adjust the fontsize for the x-axis title
     ax.set_xlabel('Year', fontsize=28)
     ax.set_ylabel('Value', fontsize=28)
@@ -114,6 +115,7 @@ def explore_statistics(data, indicator_names, countries, graph):
     if graph == "heat":
         pivot_table = selected_data.pivot_table(index=['Indicator Name',], values=[
             '1961', '1970', '1980', '1990', '2000', '2010', '2020'], aggfunc='mean')
+
     if graph == "bar":
         pivot_table = selected_data.pivot_table(index=['Country Name',], values=[
             '1961', '1970', '1980', '1990', '2000', '2010', '2020'], aggfunc='mean')
@@ -151,7 +153,7 @@ indicator_names_bar_graph = [
 countries_bar_graph = ['India', 'China',
                        'Africa Western and Central', 'Arab World', 'Australia']
 
-indicator_names_heatmap = ['Foreign direct investment, net inflows (% of GDP)', 'Droughts, floods, extreme temperatures (% of population, average 1990-2009)', 'Population, total',
+indicator_names_heatmap = ['Energy use (kg of oil equivalent per capita)', 'Droughts, floods, extreme temperatures (% of population, average 1990-2009)', 'Population, total',
                            'Poverty headcount ratio at $2.15 a day (2017 PPP) (% of population)', 'Forest area (sq. km)', 'Total greenhouse gas emissions (kt of CO2 equivalent)']
 countries_heat_graph = ['India', 'China']
 
